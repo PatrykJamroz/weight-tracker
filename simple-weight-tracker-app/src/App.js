@@ -10,29 +10,31 @@ function App() {
   const [dateInput, setDateInput] = useState('')
 
   const [weightData, setWeightData] = useState([
-    {
+    /*{
         weight: 84,
         date: "Mar 12 2020",
     },
     {
         weight: 82,
         date: "Feb 15 2020",
-    }
+    }*/
 ])
 
   const addWeightData = (props) => {
-    const updatedWeightData = [...weightData, {weight: weightInput, date: dateInput}]
+    const updatedWeightData = [...weightData, {weight: weightInput, date: dateInput}].sort((a,b) => Date.parse(a.date) - Date.parse(b.date))
     setWeightData(updatedWeightData)
   }
 
-  /*sortByDate(weightData) {
-      return weightData.sort((a,b) => a.date - b.date)
-  }
-  */
+  /*function sortByDate(updatedWeightData) {
+      return updatedWeightData.sort((a,b) => b.date - a.date)
+  }*/
+  
 
   const handleSubmit = e => {
     e.preventDefault()
     addWeightData(weightInput, dateInput)
+    console.log(dateInput)
+    
   }
 
   function handleWeightChange(event) {
@@ -43,6 +45,8 @@ function App() {
     setDateInput(event.target.value)
   }
 
+  
+
   return (
     
     <div className="App">
@@ -52,12 +56,12 @@ function App() {
                 Your weight:
                 <br />
                 <input
-                    type = "text"
+                    type = "number"
                     name = "weight"
                     placeholder = "Type your weight here"
                     value = {weightInput}
                     onChange = {handleWeightChange}
-                    
+                    required
                 />
             </label><br />
             <label>
@@ -67,7 +71,8 @@ function App() {
                     type = "date"
                     name = "date"
                     value = {dateInput}
-                    onChange = {handleDateChange}                    
+                    onChange = {handleDateChange}    
+                    required                
                 />
             </label><br />
             <button>Add!</button>
