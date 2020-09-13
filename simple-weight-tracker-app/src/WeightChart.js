@@ -1,5 +1,5 @@
 import React from "react"
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from 'recharts';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip } from '../node_modules/recharts';
 
 
 function WeightChart(props) {
@@ -8,7 +8,7 @@ function WeightChart(props) {
           <Line type="monotone" dataKey="weight" stroke="#8884d8" />
           <CartesianGrid stroke="#ccc"  strokeDasharray="5 5"/>
           <XAxis dataKey="date" />
-          <YAxis type = "number" domain = {[0, 150]}/>
+          <YAxis type = "number" domain = {['dataMin -1', 'dataMax + 1']} />
           <Tooltip />
         </LineChart>
       );
