@@ -10,14 +10,31 @@ function App() {
   const [dateInput, setDateInput] = useState('')
 
   const [weightData, setWeightData] = useState([
-    /*{
-        weight: 84,
-        date: "Mar 12 2020",
+    //some inputs for testing
+    {
+      weight: 86,
+      date: "2020-01-01",
     },
     {
-        weight: 82,
-        date: "Feb 15 2020",
-    }*/
+      weight: 82,
+      date: "2020-02-01",
+    },
+    {
+        weight: 83,
+        date: "2020-03-01",
+    },
+    {
+        weight: 80,
+        date: "2020-04-01",
+    },
+    {
+      weight: 78,
+      date: "2020-05-01",
+    },
+    {
+      weight: 72,
+      date: "2020-07-01",
+    },
 ])
 
   const addWeightData = (props) => {
@@ -25,10 +42,6 @@ function App() {
     setWeightData(updatedWeightData)
   }
 
-  /*function sortByDate(updatedWeightData) {
-      return updatedWeightData.sort((a,b) => b.date - a.date)
-  }*/
-  
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -77,7 +90,7 @@ function App() {
             </label><br />
             <button>Add!</button>
         </form>
-      <WeightChart />
+      <WeightChart data = {weightData}/>
       {weightData.map((input, index) => <WeightHistory key={index} index = {index} input = {input} />)}
     </div>
   );
